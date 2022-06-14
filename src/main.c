@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:38:47 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 17:07:15 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:04:10 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_print_fractals(t_var *vars)
 		while (pixel.x < WIDTH)
 		{
 			complex = ft_pi_to_cn(vars, pixel);
-			iter = vars->form(complex, vars->max_iters);
+			iter = vars->form(complex, vars->max_iters, vars->julia);
 			mlx_put_pixel(vars->g_img, pixel.x, pixel.y, iter * 65468784);
 			pixel.x++;
 		}
@@ -57,13 +57,14 @@ t_var	*ft_init_vars(void)
 	vars->mx = 0;
 	vars->my = 0;
 	return (vars);
-} 
+}
 
 void	ft_check_args(int argc, char **argv, t_var *vars)
 {
-	if (argc == 1 || (argv[1][0] != '1' && argv[1][0] != '2' && argv[1][0] != '3'))
+	if (argc == 1 || (argv[1][0] != '1'
+		&& argv[1][0] != '2' && argv[1][0] != '3'))
 	{
-		write(1, "1.- Mandelbrot\n2.- Julia\n3.- Other(surprise)\n", 45);
+		write(1, "1... Mandelbrot\n2... Julia\n3... Other(surprise)\n", 48);
 		exit(0);
 	}
 	if (argv[1][0] == '1')
@@ -76,14 +77,14 @@ void	ft_check_args(int argc, char **argv, t_var *vars)
 		vars->middle = (t_cn){-1, 0};
 		vars->form = burningship;
 	}
-	// else if (argv[1][0] == '2')
-	// {
-	// 	vars->middle = (t_cn){0, 0};
-	// 	vars->form = julia;
-	// 	vars->c_julia = (t_cn){-0.4, 0.6};
-	// 	if (ac >= 4)
-	// 		vars->c_julia = (t_cn){atof(argv[2]), atof(argv[3])};
-	// }
+	else if (argv[1][0] == '2')
+	{
+		vars->middle = (t_cn){0, 0};
+		vars->form = julia;
+		vars->julia = (t_cn){-0.4, 0.6};
+		if (argc >= 4)
+			vars->julia = (t_cn){ft_atof(argv[2]), ft_atof(argv[3])};
+	}
 }
 
 int32_t	main(int argc, char **argv)
@@ -97,6 +98,5 @@ int32_t	main(int argc, char **argv)
 	mlx_cursor_hook(vars->mlx, &my_curhook, vars);
 	mlx_scroll_hook(vars->mlx, &my_scrollhook, vars);
 	mlx_loop(vars->mlx);
-	system("leaks -q fractol");
 	return (0);
 }

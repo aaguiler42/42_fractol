@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:38:47 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 13:38:26 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 14:00:46 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int32_t	main(int argc, char **argv)
 	ft_check_args(argc, argv, vars);
 	ft_print_fractals(vars);
 	mlx_loop_hook(vars->mlx, &hook, vars->mlx);
+	mlx_scroll_hook(vars->mlx, &my_scrollhook, NULL);
 	mlx_loop(vars->mlx);
 	system("leaks -q fractol");
 	return (0);

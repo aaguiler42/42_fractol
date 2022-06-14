@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:14:59 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 13:17:19 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 14:01:02 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ typedef struct s_var
 
 // Hooks
 void	hook(void *param);
+void	my_scrollhook(double xdelta, double ydelta, void* param);
 
 //Utils
 t_cn	ft_pi_to_cn(t_var *vars, t_pi pixel);
+void	ft_print_fractals(t_var *vars);
 
 //Fractals
 int	mandelbrot(t_cn c, int max_iter);

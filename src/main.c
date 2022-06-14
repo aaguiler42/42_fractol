@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:38:47 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 12:13:29 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 13:38:26 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_var	*ft_init_vars(void)
 	vars->max_iters = 100;
 	vars->range = 2.5;
 	return (vars);
-}
+} 
 
 void	ft_check_args(int argc, char **argv, t_var *vars)
 {

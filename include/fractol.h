@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:14:59 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 12:15:01 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 13:17:19 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 # define HEIGHT 720
-# define WIDTH 1080
+# define WIDTH 720
 
 # include "MLX42.h"
 # include <stdlib.h>

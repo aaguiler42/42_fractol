@@ -20,6 +20,7 @@ all:	${NAME}
 	${CC} ${CFLAGS} -o $@ -c $< ${INCLUDES}
 
 ${NAME}: ${OBJS}
+	make -C MLX42
 	${CC} ${OBJS} ${LIBS} ${INCLUDES} -o ${NAME}
 
 clean:

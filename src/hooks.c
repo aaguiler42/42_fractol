@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:38:26 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 18:51:44 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 19:06:36 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,17 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 
 	vars = (t_var *)param;
 	if (keydata.key == MLX_KEY_C && keydata.action == MLX_PRESS)
-	{
 		vars->colors *= 1.01;
-		ft_print_fractals(vars);
-		mlx_image_to_window(vars->mlx, vars->g_img, 0, 0);
-	}
+	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+		vars->middle.a += vars->range / 4;
+	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+		vars->middle.a -= vars->range / 4;
+	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
+		vars->middle.b += vars->range / 4;
+	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
+		vars->middle.b -= vars->range / 4;
+	ft_print_fractals(vars);
+	mlx_image_to_window(vars->mlx, vars->g_img, 0, 0);
 }
 
 void	my_curhook(double xpos, double ypos, void *param)

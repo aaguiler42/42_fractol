@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:38:26 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 18:05:32 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:37:07 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ void	hook(void *param)
 		mlx_close_window(mlx);
 }
 
+void my_keyhook(mlx_key_data_t keydata, void* param)
+{
+	t_var	*vars;
+
+	vars = (t_var *)param;
+	if (keydata.key == MLX_KEY_C && keydata.action == MLX_PRESS)
+	{
+		vars->colors *= 1.01;
+		ft_print_fractals(vars);
+		mlx_image_to_window(vars->mlx, vars->g_img, 0, 0);
+	}
+}
+
 void	my_curhook(double xpos, double ypos, void *param)
 {
 	t_var	*vars;
@@ -33,13 +46,12 @@ void	my_curhook(double xpos, double ypos, void *param)
 void	my_scrollhook(double xdelta, double ydelta, void *param)
 {
 	t_var	*vars;
-	t_pi	p;
 	t_cn	p2;
 
+	(void)xdelta;
 	vars = (t_var *)param;
-	p = (t_pi){vars->mx, vars->my};
-	p2 = ft_pi_to_cn(vars, p);
-	if (ydelta + xdelta - xdelta < 0)
+	p2 = ft_pi_to_cn(vars, (t_pi){vars->mx, vars->my});
+	if (ydelta < 0)
 	{
 		vars->middle = (t_cn){(vars->middle.a + p2.a) / 2,
 			(vars->middle.b + p2.b) / 2};

@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:38:47 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 18:04:10 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:36:38 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_print_fractals(t_var *vars)
 		{
 			complex = ft_pi_to_cn(vars, pixel);
 			iter = vars->form(complex, vars->max_iters, vars->julia);
-			mlx_put_pixel(vars->g_img, pixel.x, pixel.y, iter * 65468784);
+			mlx_put_pixel(vars->g_img, pixel.x, pixel.y, iter * vars->colors);
 			pixel.x++;
 		}
 		pixel.y++;
@@ -54,6 +54,7 @@ t_var	*ft_init_vars(void)
 	vars->g_img = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
 	vars->max_iters = 100;
 	vars->range = 2.5;
+	vars->colors = 65468784;
 	vars->mx = 0;
 	vars->my = 0;
 	return (vars);
@@ -95,6 +96,7 @@ int32_t	main(int argc, char **argv)
 	ft_check_args(argc, argv, vars);
 	ft_print_fractals(vars);
 	mlx_loop_hook(vars->mlx, &hook, vars->mlx);
+	mlx_key_hook(vars->mlx, &my_keyhook, vars);
 	mlx_cursor_hook(vars->mlx, &my_curhook, vars);
 	mlx_scroll_hook(vars->mlx, &my_scrollhook, vars);
 	mlx_loop(vars->mlx);

@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:14:59 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 18:34:45 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:51:25 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_var
 void	hook(void *param);
 void	my_scrollhook(double xdelta, double ydelta, void *param);
 void	my_curhook(double xpos, double ypos, void *param);
-void 	my_keyhook(mlx_key_data_t keydata, void* param);
+void	my_keyhook(mlx_key_data_t keydata, void *param);
 
 //Utils
 t_cn	ft_pi_to_cn(t_var *vars, t_pi pixel);

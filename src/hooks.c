@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:38:26 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 18:37:07 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:51:44 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	hook(void *param)
 		mlx_close_window(mlx);
 }
 
-void my_keyhook(mlx_key_data_t keydata, void* param)
+void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_var	*vars;
 

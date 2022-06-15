@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:11:16 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/14 18:07:08 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/15 11:21:34 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,26 @@ char	*ft_strdup(const char *s1)
 
 double	ft_atof(char *str)
 {
-	char	*copy;
 	int		i;
 	double	ret;
-	char	*deci;
 	double	n_deci;
 
-	copy = ft_strdup(str);
 	i = 0;
-	while (copy[i] && copy[i] != '.')
+	while (str[i] && str[i] != '.')
 		i++;
-	if (!copy[i])
+	if (!str[i])
 	{
-		ret = (double)ft_atoi(copy);
-		free(copy);
+		ret = (double)ft_atoi(str);
 		return (ret);
 	}
-	deci = &copy[i + 1];
-	copy[i] = '\0';
-	ret = (double)ft_atoi(copy);
-	n_deci = (double)ft_atoi(deci);
-	while (n_deci > 0)
+	str[i] = '\0';
+	ret = (double)ft_atoi(str);
+	n_deci = (double)ft_atoi(&str[i + 1]);
+	while (n_deci > 1)
 		n_deci /= 10;
-	free(copy);
-	return (ret + n_deci);
+	while (str[++i] == '0')
+		n_deci /= 10;
+	if (ret > 0)
+		return (ret + n_deci);
+	return (ret - n_deci);
 }

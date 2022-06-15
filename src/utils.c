@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:11:16 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/15 11:29:19 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/15 12:10:17 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,34 +45,6 @@ int	ft_atoi(const char *str)
 		finalint = finalint * 10 + (str2[i++] - '0');
 	finalint *= sign;
 	return (finalint);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*dest;
-	int		i;
-
-	dest = malloc((ft_strlen(s1) + 1) * sizeof(char));
-	if (!dest)
-		return (0);
-	i = 0;
-	while (s1[i])
-	{
-		dest[i] = s1[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
 }
 
 double	ft_atof(char *str)

@@ -6,7 +6,7 @@
 /*   By: aaguiler <aaguiler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:11:16 by aaguiler          #+#    #+#             */
-/*   Updated: 2022/06/15 11:21:34 by aaguiler         ###   ########.fr       */
+/*   Updated: 2022/06/15 11:29:19 by aaguiler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ double	ft_atof(char *str)
 		n_deci /= 10;
 	while (str[++i] == '0')
 		n_deci /= 10;
-	if (ret > 0)
-		return (ret + n_deci);
-	return (ret - n_deci);
+	if (str[0] == '-')
+		return (ret - n_deci);
+	return (ret + n_deci);
 }
